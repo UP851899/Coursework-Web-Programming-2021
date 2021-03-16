@@ -5,12 +5,12 @@
   "main": "server.js",
   "dependencies": {
     "eslint": "^7.22.0",
+    "eslint-config-portsoc": "^0.8.1",
     "eslint-config-semistandard": "^15.0.1",
     "eslint-config-standard": "^16.0.2",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
-    "eslint-config-portsoc": "^0.8.1",
     "express": "^4.17.1"
   },
   "devDependencies": {},
@@ -20,7 +20,6 @@
   },
   "author": "UP851899",
   "license": "ISC",
-
   "eslintConfig": {
     "extends": "portsoc",
     "root": true,
