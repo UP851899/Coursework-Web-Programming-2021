@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 function dropHandler(e) {
   console.log('File(s) have been dropped');
 
@@ -27,3 +26,16 @@ function dragOverHandler(e) {
   // Prevents browsers default actions
   e.preventDefault();
 }
+
+function test() {
+  console.log('test');
+}
+
+window.addEventListener('load', () => {
+  document.addEventListener('dragover', (e) => {
+    e.preventDefault();
+  });
+  document.addEventListener('drop', (e) => {
+    e.preventDefault();
+  });
+});
