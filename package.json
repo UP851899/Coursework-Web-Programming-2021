@@ -13,7 +13,10 @@
     "eslint-plugin-promise": "^4.2.1",
     "express": "^4.17.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "stylelint": "^13.12.0",
+    "stylelint-config-standard": "^21.0.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
