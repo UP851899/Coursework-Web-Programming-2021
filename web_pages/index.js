@@ -1,3 +1,6 @@
+'use strict';
+
+// eslint-disable-next-line no-unused-vars
 function dropHandler(e) {
   console.log('File(s) have been dropped');
 
@@ -20,17 +23,7 @@ function dropHandler(e) {
   }
 }
 
-function dragOverHandler(e) {
-  console.log('File(s) are in the drop zone');
-
-  // Prevents browsers default actions
-  e.preventDefault();
-}
-
-function test() {
-  console.log('test');
-}
-
+// EventListener for entire webpage - if dropped on wrong location
 window.addEventListener('load', () => {
   document.addEventListener('dragover', (e) => {
     e.preventDefault();
