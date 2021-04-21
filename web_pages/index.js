@@ -1,11 +1,9 @@
 'use strict';
+const fileStorage = window.localStorage;
 
 // eslint-disable-next-line no-unused-vars
 function dropHandler(e) {
   console.log('File(s) have been dropped');
-
-  // Prevent browsers default behaviour where it opens the file
-  e.preventDefault();
 
   if (e.dataTransfer.items) {
     // Access uploaded files (DataTransferItemList method)
@@ -13,7 +11,7 @@ function dropHandler(e) {
       if (e.dataTransfer.items[i].kind === 'file') {
         const file = e.dataTransfer.items[i].getAsFile();
         console.log('file[' + i + '].name = ' + file.name);
-        localStorage.setItem('file', file.name);
+        localStorage.setItem(i, file);
       }
     }
   } else {
@@ -23,7 +21,8 @@ function dropHandler(e) {
       localStorage.setItem('file', e.dataTransfer.files[i].name);
     }
   }
-  console.log(localStorage.getItem('file'));
+  const test = localStorage.getItem(1);
+  window.alert(test.name);
 }
 
 // EventListener for entire webpage - if dropped on wrong location
