@@ -12,15 +12,18 @@ function dropHandler(e) {
     for (let i = 0; i < e.dataTransfer.items.length; i++) {
       if (e.dataTransfer.items[i].kind === 'file') {
         const file = e.dataTransfer.items[i].getAsFile();
-        console.log('... file[' + i + '].name = ' + file.name);
+        console.log('file[' + i + '].name = ' + file.name);
+        localStorage.setItem('file', file.name);
       }
     }
   } else {
     // Access uploaded files (DataTransfer method)
     for (let i = 0; i < e.dataTransfer.items.length; i++) {
-      console.log('... file[' + i + '].name = ' + e.dataTransfer.files[i].name);
+      console.log('file[' + i + '].name = ' + e.dataTransfer.files[i].name);
+      localStorage.setItem('file', e.dataTransfer.files[i].name);
     }
   }
+  console.log(localStorage.getItem('file'));
 }
 
 // EventListener for entire webpage - if dropped on wrong location
