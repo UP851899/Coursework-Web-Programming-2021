@@ -13,19 +13,24 @@ app.use(express.json());
 app.use('/', express.static('web_pages'));
 
 // Storage
-const storage = multer.diskStorage({
+const fileStorage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, '/files');
+    cb(null, './files');
   },
   filename: (req, file, cb) => {
-    cb(null, Date.now() + '-' + file.originalname);
+    cb(null, Date.now() + file.originalname);
   },
 });
 
 // Upload
-const upload = multer({ storage: storage });
+const upload = multer({ storage: fileStorage });
 
-app.post('/upload-files', upload.array('file', 50), (req, res) => {
-  console.log(req.files);
-  return res.send('Files uploaded');
-});
+app.post('/upload-files', upload.array('multiFiles', 25),
+  function (req, res, err) {
+    if (err) {
+      console.log('error');
+      console.log(err);
+    }
+    res.end();
+    console.log(req.files);
+  });
