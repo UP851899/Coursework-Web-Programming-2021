@@ -9,14 +9,9 @@
 </head>
 
 <h1>Plagiarism Checker</h1>
-<form method="POST" action="/upload-files" enctype="multipart/form-data">
-    <div>
-        <label>Select files</label>
-        <input type="file" name="multiple_files" multiple />
-    </div>
-    <div>
-        <input type="submit" name="uploadFiles" value="Upload" />
-    </div>
+<form action="/upload-files" method="POST" enctype="multipart/form-data">
+    <input type="file" name="multiFiles" multiple />
+    <button type="submit">Upload</button>
 </form>
 
 </html>
