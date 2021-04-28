@@ -6,7 +6,7 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
-    "eslint": "^7.22.0",
+    "eslint": "^7.25.0",
     "eslint-config-portsoc": "^0.8.1",
     "eslint-config-semistandard": "^15.0.1",
     "eslint-config-standard": "^16.0.2",
