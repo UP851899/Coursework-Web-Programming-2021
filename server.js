@@ -1,40 +1,53 @@
 const express = require('express');
 const multer = require('multer');
 const sqlite3 = require('sqlite3').verbose();
+// .verbose() used for additional log info, in case of troubleshooting
 
 const app = express();
 const port = 8080;
-const DB_PATH = ':memory:';
 
 app.listen(port, (e) => {
   console.log(`server ${e ? 'failed to start' : `listening on port ${port}`}`);
 });
 
-// Database
+// Database \\
+
+// Open in memory
 // eslint-disable-next-line no-unused-vars
-const DB = new sqlite3.Database(DB_PATH, function (err) {
+const db = new sqlite3.Database(':memory:', (err) => {
   if (err) {
-    console.log(err);
-    return;
+    return console.log(err);
   }
-  console.log('Connected to database: ' + DB_PATH);
+  console.log('Connected to memory db');
 });
+
+// Close db
+// db.close((err) => {
+//   if (err) {
+//     console.log(err);
+//     return;
+//   }
+//   console.log('Closed db connection');
+// });
 
 // Get webpages
 app.use(express.json());
-app.use('/', express.static('web_pages'));
+app.use('/', express.static('web_pages', { extensions: ['html'] }));
+app.set('view engine');
 
-// Storage
+// File Upload \\
+
+// File storage
 const fileStorage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, './files');
   },
   filename: (req, file, cb) => {
-    cb(null, Date.now() + file.originalname);
+    cb(null, file.originalname);
   },
 });
 
-// Upload
+// Upload using multer
 const upload = multer({ storage: fileStorage });
 
 app.post('/upload-files', upload.array('multiFiles', 25),
@@ -43,6 +56,7 @@ app.post('/upload-files', upload.array('multiFiles', 25),
       console.log('error');
       console.log(err);
     }
-    res.end();
     console.log(req.files);
+
+    res.redirect('/');
   });
