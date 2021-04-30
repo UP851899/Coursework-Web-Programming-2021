@@ -50,13 +50,13 @@ const fileStorage = multer.diskStorage({
 // Upload using multer
 const upload = multer({ storage: fileStorage });
 
-app.post('/upload-files', upload.array('multiFiles', 25),
+// Set max # files to upload as 50 currently
+app.post('/upload-files', upload.array('multiFiles', 50),
   function (req, res, err) {
     if (err) {
       console.log('error');
       console.log(err);
     }
     console.log(req.files);
-
     res.redirect('/');
   });
