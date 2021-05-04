@@ -1,7 +1,8 @@
+import { createRequire } from 'module';
+import * as db from './fileStorage.js';
+const require = createRequire(import.meta.url);
 const express = require('express');
 const multer = require('multer');
-const sqlite3 = require('sqlite3').verbose();
-// .verbose() used for additional log info, in case of troubleshooting
 
 const app = express();
 const port = 8080;
@@ -9,26 +10,6 @@ const port = 8080;
 app.listen(port, (e) => {
   console.log(`server ${e ? 'failed to start' : `listening on port ${port}`}`);
 });
-
-// Database \\
-
-// Open in memory
-// eslint-disable-next-line no-unused-vars
-const db = new sqlite3.Database(':memory:', (err) => {
-  if (err) {
-    return console.log(err);
-  }
-  console.log('Connected to memory db');
-});
-
-// Close db
-// db.close((err) => {
-//   if (err) {
-//     console.log(err);
-//     return;
-//   }
-//   console.log('Closed db connection');
-// });
 
 // Get webpages
 app.use(express.json());
@@ -60,3 +41,22 @@ app.post('/upload-files', upload.array('multiFiles', 50),
     console.log(req.files);
     res.redirect('/');
   });
+
+function asyncWrap(f) {
+  return (req, res, next) => {
+    Promise.resolve(f(req, res, next))
+      .catch((e) => next(e || new Error()));
+  };
+}
+
+// test DB
+async function getTest(req, res) {
+  const testName = await db.test();
+  if (!testName) {
+    res.statis(404).send('failed');
+    return;
+  }
+  res.json(testName);
+}
+
+app.get('/test', asyncWrap(getTest));
