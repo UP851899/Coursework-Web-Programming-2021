@@ -4,7 +4,6 @@ import { createRequire } from 'module';
 import sqlite from 'sqlite3';
 import { open } from 'sqlite';
 const require = createRequire(import.meta.url);
-const sqlite3 = require('sqlite3').verbose();
 const shortID = require('shortid');
 
 async function init() {
