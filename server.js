@@ -39,6 +39,7 @@ app.post('/upload-files', upload.array('multiFiles', 50),
       console.log(err);
     }
     console.log(req.files);
+    db.uploadToDB(req.files);
     res.redirect('/');
   });
 
@@ -48,15 +49,3 @@ function asyncWrap(f) {
       .catch((e) => next(e || new Error()));
   };
 }
-
-// test DB
-async function getTest(req, res) {
-  const testName = await db.test();
-  if (!testName) {
-    res.statis(404).send('failed');
-    return;
-  }
-  res.json(testName);
-}
-
-app.get('/test', asyncWrap(getTest));
