@@ -17,6 +17,7 @@ async function init() {
 
 const dbConnect = init();
 
+// Takes req.files, inserts file details into DB for reference
 export async function uploadToDB(files) {
   for (const file of files) {
     console.log(file.originalname);

@@ -1,3 +1,4 @@
+// createRequire needed to solver issues with module
 import { createRequire } from 'module';
 import * as db from './fileStorage.js';
 const require = createRequire(import.meta.url);
@@ -38,7 +39,6 @@ app.post('/upload-files', upload.array('multiFiles', 50),
       console.log('error');
       console.log(err);
     }
-    console.log(req.files);
     db.uploadToDB(req.files);
     res.redirect('/');
   });
