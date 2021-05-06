@@ -43,9 +43,18 @@ app.post('/upload-files', upload.array('multiFiles', 50),
     res.redirect('/');
   });
 
+async function getFileNames(req, res) {
+  let result = [];
+  result = await db.getNames();
+  console.log(result);
+  return res.json(result);
+}
+
 function asyncWrap(f) {
   return (req, res, next) => {
     Promise.resolve(f(req, res, next))
       .catch((e) => next(e || new Error()));
   };
 }
+
+app.get('/filenames', asyncWrap(getFileNames));

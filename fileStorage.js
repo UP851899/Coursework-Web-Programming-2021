@@ -30,3 +30,10 @@ export async function uploadToDB(files) {
     db.run('INSERT INTO Files VALUES (?, ?, ?)', [id, fileName, path]);
   }
 }
+
+// Get list of names
+export async function getNames() {
+  const db = await dbConnect;
+  const q = 'SELECT originalName FROM Files;';
+  return db.all(q);
+}
