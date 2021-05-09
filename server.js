@@ -46,7 +46,6 @@ app.post('/upload-files', upload.array('multiFiles', 50),
 async function getFileNames(req, res) {
   let result = [];
   result = await db.getNames();
-  console.log(result);
   return res.json(result);
 }
 
