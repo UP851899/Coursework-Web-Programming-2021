@@ -1,5 +1,74 @@
-#drop {
-    border: 5px solid black;
-    width: 200px;
-    height: 200px;
+
+/* -------------- */
+/* Navigation CSS */
+/* -------------- */
+
+.header {
+	padding-top: .5em;
+	padding-bottom: .5em;
+	background-color: #696969;
+	border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+ul li {
+    margin-left: 20px;
+}
+
+.Title {
+    color: white;
+	margin: 0;
+	font-size: 1.45em;
+}
+
+.Title, .nav {
+    font-family: Arial;
+    padding: 10px 15px;
+	text-align: center;
+	display: block;
+}
+
+.nav {
+    margin-top: 5px;
+}
+
+.nav a {
+    color: #e4e4e4;
+	font-size: 1em;
+}
+
+.nav a:hover {
+	color: #c7c7c7;
+}
+
+
+/* -------------------------------------------------- */
+/* Media tests for screen width - adaptive navigation */
+/* -------------------------------------------------- */
+
+@media (min-width: 720px) {
+	.header, .nav {
+		display: flex;
+	}
+	.header {
+		flex-direction: column;
+		align-items: center;
+		width: 80%;
+		margin: 0 auto;
+		max-width: 1150px;
+	}
+}
+
+@media (min-width: 1024px) {
+	.header {
+		flex-direction: row;
+		justify-content: space-between;
+	}
+
 }
