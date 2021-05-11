@@ -1,6 +1,8 @@
 // createRequire needed to solver issues with module
 import { createRequire } from 'module';
 import * as db from './fileStorage.js';
+import * as compare from './modules/compare.js';
+
 const require = createRequire(import.meta.url);
 const express = require('express');
 const multer = require('multer');
@@ -8,6 +10,7 @@ const multer = require('multer');
 const app = express();
 const port = 8080;
 
+// Console log for server start
 app.listen(port, (e) => {
   console.log(`server ${e ? 'failed to start' : `listening on port ${port}`}`);
 });
@@ -43,9 +46,33 @@ app.post('/upload-files', upload.array('multiFiles', 50),
     res.redirect('/');
   });
 
+// Database queries
 async function getFileNames(req, res) {
   let result = [];
   result = await db.getNames();
+  return res.json(result);
+}
+
+async function getFilePaths(req, res) {
+  let result = [];
+  result = await db.getPaths();
+  return res.json(result);
+}
+
+// Testing comparison \\
+// try {
+//   console.log(compareTest());
+// } catch (err) {
+//   console.log(err);
+// }
+// try {
+//   console.log(compare.compStart());
+// } catch (err) {
+//   console.log(err);
+// }
+
+async function getComparison(req, res) {
+  const result = await compare.comparison(req.body.fileOne, req.body.fileTwo);
   return res.json(result);
 }
 
@@ -57,3 +84,5 @@ function asyncWrap(f) {
 }
 
 app.get('/filenames', asyncWrap(getFileNames));
+app.get('/filepaths', asyncWrap(getFilePaths));
+app.post('/compareResults', express.json(), asyncWrap(getComparison));
