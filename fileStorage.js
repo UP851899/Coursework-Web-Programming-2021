@@ -31,9 +31,19 @@ export async function uploadToDB(files) {
   }
 }
 
+// Queries \\
+let q;
+
 // Get list of names
 export async function getNames() {
   const db = await dbConnect;
-  const q = 'SELECT originalName FROM Files;';
+  q = 'SELECT DISTINCT originalName FROM Files;';
+  return db.all(q);
+}
+
+// Get list of paths
+export async function getPaths() {
+  const db = await dbConnect;
+  q = 'SELECT DISTINCT pathName FROM Files;';
   return db.all(q);
 }
