@@ -47,6 +47,9 @@ ul li {
 	color: #c7c7c7;
 }
 
+.navigation {
+	padding-bottom: 20px;
+}
 
 /* -------------------------------------------------- */
 /* Media tests for screen width - adaptive navigation */
