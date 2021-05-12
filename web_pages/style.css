@@ -1,9 +1,17 @@
+/* ------------ */
+/* Global style */
+/* ------------ */
+
+* {
+	font-family: Arial;
+}
+
 
 /* -------------- */
 /* Navigation CSS */
 /* -------------- */
 
-.header {
+.navigation .header {
 	padding-top: .5em;
 	padding-bottom: .5em;
 	background-color: #696969;
@@ -11,39 +19,41 @@
     margin-bottom: 10px;
 }
 
-ul {
+.navigation ul {
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
-ul li {
+.navigation ul li {
     margin-left: 20px;
+	margin-right: 20px;
+	font-size: larger;
 }
 
-.Title {
+.navigation .Title {
     color: white;
 	margin: 0;
 	font-size: 1.45em;
 }
 
-.Title, .nav {
-    font-family: Arial;
+.navigation .Title, .nav {
+
     padding: 10px 15px;
 	text-align: center;
 	display: block;
 }
 
-.nav {
+.navigation .nav {
     margin-top: 5px;
 }
 
-.nav a {
+.navigation .nav a {
     color: #e4e4e4;
 	font-size: 1em;
 }
 
-.nav a:hover {
+.navigation .nav a:hover {
 	color: #c7c7c7;
 }
 
@@ -56,10 +66,10 @@ ul li {
 /* -------------------------------------------------- */
 
 @media (min-width: 720px) {
-	.header, .nav {
+	.navigation .header, .nav {
 		display: flex;
 	}
-	.header {
+	.navigation .header {
 		flex-direction: column;
 		align-items: center;
 		width: 80%;
@@ -69,9 +79,62 @@ ul li {
 }
 
 @media (min-width: 1024px) {
-	.header {
+	.navigation .header {
 		flex-direction: row;
 		justify-content: space-between;
 	}
 
+}
+
+/* ------------------ */
+/* Index.html styling */
+/* ------------------ */
+
+.upload-form {
+	display: block;
+	text-align: center;
+}
+
+.upload-form form {
+	display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.fileList {
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	margin-left: auto;
+    margin-right: auto;
+}
+
+.fileList ul {
+	list-style: none;
+}
+
+.fileList ul li {
+	margin-bottom: 5px;
+}
+
+/* -------------------- */
+/* Compare.html styling */
+/* -------------------- */
+
+.comparison {
+	display: block;
+	margin-left: auto;
+    margin-right: auto;
+	text-align: center;
+}
+
+.comparison table {
+	display: flex;
+	justify-content: center;
+}
+
+.comparison table td, th {
+	border: 1px solid #dddddd;
+	text-align: left;
+	padding: 8px;
 }
