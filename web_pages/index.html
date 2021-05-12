@@ -15,16 +15,23 @@
     </header>
 </div>
 
-<form action="/upload-files" method="POST" enctype="multipart/form-data">
-    <input type="file" name="multiFiles" multiple />
-    <button type="submit">Upload</button>
-</form>
+<body>
+    <div class="upload-form">
+        <form action="/upload-files" method="POST" enctype="multipart/form-data">
+            <input type="file" name="multiFiles" multiple />
+            <button type="submit">Upload</button>
+        </form>
+    </div>
+    
+    
+    <div class="fileList">
+        <h2>Uploaded files</h2>
+        <ul id="my-files">
+            <li></li>
+            <!-- Added when files are uploaded -->
+        </ul>
+    </div>
+</body>
 
-<div>
-    <h2>Uploaded files</h2>
-    <ul id="my-files">
-        <!-- Added when files are uploaded -->
-    </ul>
-</div>
 
 </html>
