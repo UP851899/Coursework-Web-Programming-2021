@@ -59,18 +59,6 @@ async function getFilePaths(req, res) {
   return res.json(result);
 }
 
-// Testing comparison \\
-// try {
-//   console.log(compareTest());
-// } catch (err) {
-//   console.log(err);
-// }
-// try {
-//   console.log(compare.compStart());
-// } catch (err) {
-//   console.log(err);
-// }
-
 async function getComparison(req, res) {
   const result = await compare.comparison(req.body.fileOne, req.body.fileTwo);
   return res.json(result);
