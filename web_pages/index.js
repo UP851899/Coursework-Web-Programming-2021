@@ -10,24 +10,17 @@ window.addEventListener('load', () => {
     e.preventDefault();
   });
   // Load file names from database
-  getFileNames();
+  if (window.location.href.indexOf('index.html') > -1) {
+    showFileNames();
+  }
   if (window.location.href.indexOf('compare.html') > -1) {
     fileComparison();
   }
 });
 
-async function getFileNames() {
-  const names = await fetch('/filenames');
-  let returnedNames;
-  if (names.ok) {
-    returnedNames = await names.json();
-  } else {
-    returnedNames = { msg: 'No names found' };
-  }
-  for (const names of returnedNames) {
-    console.log(names.originalName);
-  }
-}
+// ----------------------------- \\
+// Compare files to show on page \\
+// ----------------------------- \\
 
 async function fileComparison() {
   const pathFetch = await fetch('/filepaths');
@@ -39,6 +32,7 @@ async function fileComparison() {
     returnedPaths = undefined;
   }
 
+  // Duplicate array for loop, shift for comparison
   const pathsCopy = [...returnedPaths];
   pathsCopy.shift();
 
@@ -55,10 +49,57 @@ async function fileComparison() {
       if (response.ok) {
         let percentResult = await response.json();
         percentResult = percentResult * 100 + '%';
-        console.log(x.pathName + ' & ' + y.pathName + ' = ' + percentResult);
+        // console.log(x.pathName + ' & ' + y.pathName + ' = ' + percentResult);
+        addResults(x.pathName, y.pathName, percentResult);
       } else {
         console.log('No percentage found');
       }
     }
   }
+}
+
+// ------------------ \\
+// Showing File Names \\
+// ------------------ \\
+async function showFileNames() {
+  const ul = document.getElementById('my-files');
+
+  // Query from database to get files names
+  const names = await fetch('/filenames');
+  let returnedNames;
+  if (names.ok) {
+    returnedNames = await names.json();
+  } else {
+    returnedNames = { msg: 'No names found' };
+  }
+
+  for (const names of returnedNames) {
+    const li = document.createElement('li');
+    // console.log(names.originalName); // test file name output
+    li.appendChild(document.createTextNode(names.originalName));
+    ul.appendChild(li);
+  }
+}
+
+// --------------------------------- \\
+// Adding comparison results to page \\
+// --------------------------------- \\
+function addResults(pathOne, pathTwo, result) {
+  const table = document.getElementById('results');
+  let fileOne = extractName(pathOne);
+  let fileTwo = extractName(pathTwo);
+
+  let newRow = table.insertRow(1);
+  let cellOne = newRow.insertCell(0);
+  let cellTwo = newRow.insertCell(1);
+  let cellThree = newRow.insertCell(2);
+
+  cellOne.innerHTML = fileOne;
+  cellTwo.innerHTML = fileTwo;
+  cellThree.innerHTML = result;
+}
+
+function extractName(path) {
+  let fileName = path.slice(6);
+  return fileName;
 }
