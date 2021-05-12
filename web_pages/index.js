@@ -10,7 +10,7 @@ window.addEventListener('load', () => {
     e.preventDefault();
   });
   // Load file names from database
-  if (window.location.href.indexOf('index.html') > -1) {
+  if (window.location.href.indexOf('/') > -1) {
     showFileNames();
   }
   if (window.location.href.indexOf('compare.html') > -1) {
@@ -59,6 +59,7 @@ async function fileComparison() {
       }
     }
   }
+  sortTable();
 }
 
 // ------------------ \\
@@ -105,4 +106,32 @@ function addResults(pathOne, pathTwo, result) {
 function extractName(path) {
   let fileName = path.slice(6);
   return fileName;
+}
+
+// ------------------ \\
+// Sorting HTML Table \\
+// ------------------ \\
+function sortTable() {
+  let table, rows, switching, i, shouldSwitch;
+  table = document.getElementById('results');
+  switching = true;
+  while (switching) {
+    switching = false;
+    rows = table.rows;
+
+    for (i = 1; i < (rows.length - 1); i++) {
+      shouldSwitch = false;
+      let x = rows[i].getElementsByTagName('td')[2];
+      let y = rows[i + 1].getElementsByTagName('td')[2];
+
+      if (parseInt(x.innerHTML) < parseInt(y.innerHTML)) {
+        shouldSwitch = true;
+        break;
+      }
+    }
+    if (shouldSwitch) {
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+    }
+  }
 }
