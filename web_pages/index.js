@@ -59,6 +59,7 @@ async function fileComparison() {
       }
     }
   }
+  // After results, function to sort table High-to-Low
   sortTable();
 }
 
@@ -112,12 +113,12 @@ function extractName(path) {
 // Sorting HTML Table \\
 // ------------------ \\
 function sortTable() {
-  let table, rows, switching, i, shouldSwitch;
-  table = document.getElementById('results');
-  switching = true;
+  let i, shouldSwitch;
+  const table = document.getElementById('results');
+  let switching = true;
   while (switching) {
     switching = false;
-    rows = table.rows;
+    let rows = table.rows;
 
     for (i = 1; i < (rows.length - 1); i++) {
       shouldSwitch = false;
