@@ -97,24 +97,42 @@
 
 .upload-form form {
 	display: inline-block;
-    margin-left: auto;
-    margin-right: auto;
+	justify-content: center;
 }
 
 .fileList {
-	justify-content: center;
-	align-items: center;
+	display: flex;
+	flex-direction: column;
 	text-align: center;
-	margin-left: auto;
-    margin-right: auto;
 }
 
 .fileList ul {
 	list-style: none;
+	padding: 0%;
 }
 
 .fileList ul li {
-	margin-bottom: 5px;
+	margin-bottom: 7px;
+}
+
+.compareButton {
+	display: flex;
+	justify-content: center;
+}
+
+.compareButton .button {
+	background-color: #696969;
+	text-align: center;
+	color: white;
+	font-size: 20px;
+	justify-content: center;
+	padding: 15px 32px;
+	border-radius: 10px;
+	text-decoration: none;
+}
+
+.compareButton .button:hover {
+	background-color: #4b4b4b;
 }
 
 /* -------------------- */
