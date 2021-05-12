@@ -38,6 +38,9 @@ async function fileComparison() {
 
   for (const x of returnedPaths) {
     for (const y of pathsCopy) {
+      if (x.pathName === y.pathName) {
+        continue;
+      }
       let data = { fileOne: x.pathName, fileTwo: y.pathName };
       let postData = {
         method: 'POST',
@@ -48,7 +51,7 @@ async function fileComparison() {
       let response = await fetch('/compareResults', postData);
       if (response.ok) {
         let percentResult = await response.json();
-        percentResult = percentResult * 100 + '%';
+        percentResult = percentResult.toPrecision(3) * 100 + '%';
         // console.log(x.pathName + ' & ' + y.pathName + ' = ' + percentResult);
         addResults(x.pathName, y.pathName, percentResult);
       } else {
