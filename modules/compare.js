@@ -36,7 +36,6 @@ export function comparison(pathOne, pathTwo) {
     if (err) {
       console.log(err);
     } else {
-      console.log('file1 read at - ' + pathOne);
       return data;
     }
   });
@@ -45,12 +44,10 @@ export function comparison(pathOne, pathTwo) {
     if (err) {
       console.log(err);
     } else {
-      console.log('file2 read at - ' + pathTwo);
       return data;
     }
   });
 
   const testValue = stringSimilarity.compareTwoStrings(test1, test2);
-  console.log('Percentage = ' + testValue);
   return testValue;
 }
