@@ -16,12 +16,20 @@
 </div>
 
 <body>
-    <div class="upload-form">
+    <div class="drop-zone">
+        <form id="upload" action="/upload-files" method="POST" enctype="multipart/form-data">
+            <input id="input" type="file" name="multiFiles" multiple />
+            <p>Drag your files here, or click to open explorer</p>
+            <button type="submit">Upload</button>
+        </form>
+    </div>
+
+    <!-- <div class="upload-form">
         <form action="/upload-files" method="POST" enctype="multipart/form-data">
             <input type="file" name="multiFiles" multiple />
             <button type="submit">Upload</button>
         </form>
-    </div>
+    </div> -->
     
     
 

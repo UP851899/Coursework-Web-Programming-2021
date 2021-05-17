@@ -129,11 +129,57 @@
 	padding: 15px 32px;
 	border-radius: 10px;
 	text-decoration: none;
+	transition: all .2s ease;
 }
 
 .compareButton .button:hover {
 	background-color: #4b4b4b;
 }
+
+/* ----------------- */
+/* Drop zone styling */
+/* ----------------- */
+
+.drop-zone {
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	margin-bottom: 4em;
+	cursor: pointer;
+}
+
+.drop-zone form {
+	position: relative; 
+	width: 500px;
+	height: 200px;
+	border: 4px dashed grey;
+	background-color: #c7c7c7;
+	box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 10px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.drop-zone form p {
+	line-height: 120px;
+}
+
+.drop-zone form input {
+	/* opacity: 0; */
+}
+
+.drop-zone form button {
+	background: #696969;
+	color: white;
+	width: 500px;
+	height: 30px;
+	margin-top: 4em;
+	border-radius: 6px;
+	transition: all .2s ease;
+}
+
+.drop-zone form button:hover {
+	background: #4b4b4b;
+	cursor: pointer;
+}
+
 
 /* -------------------- */
 /* Compare.html styling */
