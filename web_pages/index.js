@@ -42,17 +42,18 @@ async function fileComparison() {
         continue;
       }
       let data = { fileOne: x.pathName, fileTwo: y.pathName };
-      let postData = {
+
+      // Fetch and passing object containing both paths
+      let response = await fetch('/compareResults', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
-      };
+      });
 
-      let response = await fetch('/compareResults', postData);
       if (response.ok) {
         let percentResult = await response.json();
         percentResult = percentResult.toPrecision(3) * 100 + '%';
-        // console.log(x.pathName + ' & ' + y.pathName + ' = ' + percentResult);
+
         addResults(x.pathName, y.pathName, percentResult);
       } else {
         console.log('No percentage found');
