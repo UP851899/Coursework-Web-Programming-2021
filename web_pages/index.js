@@ -3,19 +3,31 @@
 
 // EventListener for entire webpage - if dropped on wrong location
 window.addEventListener('load', () => {
-  document.addEventListener('dragover', (e) => {
-    e.preventDefault();
-  });
-  document.addEventListener('drop', (e) => {
-    e.preventDefault();
-  });
-  // Load file names from database
   if (window.location.href.indexOf('/') > -1) {
     showFileNames();
   }
   if (window.location.href.indexOf('compare.html') > -1) {
     fileComparison();
   }
+});
+
+// -------------------- \\
+// Drag-n-drop & upload \\
+// -------------------- \\
+// const fileSelector = document.getElementById('input');
+const dropZone = document.getElementById('upload');
+const fileInput = document.getElementById('input');
+
+dropZone.addEventListener('dragover', (event) => {
+  event.stopPropagation();
+  event.preventDefault();
+  event.dataTransfer.dropEffect = 'copy';
+});
+
+dropZone.addEventListener('drop', (event) => {
+  event.stopPropagation();
+  event.preventDefault();
+  fileInput.files = event.dataTransfer.files; // Adds uploaded files to standard HTML input
 });
 
 // ----------------------------- \\
