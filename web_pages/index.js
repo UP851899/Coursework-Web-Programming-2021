@@ -3,11 +3,10 @@
 
 // EventListener for entire webpage - if dropped on wrong location
 window.addEventListener('load', () => {
-  if (window.location.href.indexOf('/') > -1) {
-    showFileNames();
-  }
   if (window.location.href.indexOf('compare.html') > -1) {
     fileComparison();
+  } else if (window.location.href.indexOf('/') > -1) {
+    showFileNames();
   }
 });
 
@@ -30,9 +29,9 @@ dropZone.addEventListener('drop', (event) => {
   fileInput.files = event.dataTransfer.files; // Adds uploaded files to standard HTML input
 });
 
-// ----------------------------- \\
-// Compare files to show on page \\
-// ----------------------------- \\
+// -------------------------------------------------- \\
+// Compare Files Page - Compare files to show on page \\
+// -------------------------------------------------- \\
 
 async function fileComparison() {
   const pathFetch = await fetch('/filepaths');
