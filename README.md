@@ -53,7 +53,7 @@ Here is the results table for the file comparison. The table is sorted high-to-l
 
 ## File structure
 
-<image align="left" src="images/structure.png">
+<image align="left" src="images/structure.png" height="420">
 
 Here is the file structure for my project.
 
@@ -64,3 +64,11 @@ Everything the user sees is within the "web_pages" folder. This contains the two
 The "modules" folder contains the js script "compare.js", this is responsible for the comparison of files using string-comparison.
 
 To reset the program, the "files" folder and "fileDB.sqlite" can simply be deleted
+
+## Final words
+
+Whole project was built using GitHub, many branches and many commits (repo is private but can be made public if you wanted to see)
+
+Thank you!
+
+Happy Marking =)
