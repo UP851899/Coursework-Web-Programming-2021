@@ -1,6 +1,5 @@
 /* eslint-disable prefer-const */
 'use strict';
-
 // EventListener for entire webpage - if dropped on wrong location
 window.addEventListener('load', () => {
   if (window.location.href.indexOf('compare.html') > -1) {
@@ -16,6 +15,10 @@ window.addEventListener('load', () => {
 // const fileSelector = document.getElementById('input');
 const dropZone = document.getElementById('upload');
 const fileInput = document.getElementById('input');
+
+dropZone.addEventListener('click', () => {
+  fileInput.click();
+});
 
 dropZone.addEventListener('dragover', (event) => {
   event.stopPropagation();
