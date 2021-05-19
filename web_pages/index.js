@@ -61,7 +61,6 @@ async function fileComparison() {
 
   // Duplicate array for loop, shift for comparison
   const pathsCopy = [...returnedPaths];
-  pathsCopy.shift();
 
   for (const x of returnedPaths) {
     for (const y of pathsCopy) {
