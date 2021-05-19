@@ -142,9 +142,11 @@
 
 .drop-zone {
 	display: flex;
+	flex-direction: column;
+	align-items: center;
 	justify-content: center;
 	text-align: center;
-	margin-bottom: 4em;
+	margin-bottom: 2em;
 	cursor: pointer;
 }
 
@@ -165,17 +167,17 @@
 	opacity: 0;
 }
 
-.drop-zone form button {
+.drop-zone button {
 	background: #696969;
 	color: white;
 	width: 500px;
 	height: 30px;
-	margin-top: 4em;
+	margin-top: 2em;
 	border-radius: 6px;
 	transition: all .2s ease;
 }
 
-.drop-zone form button:hover {
+.drop-zone button:hover {
 	background: #4b4b4b;
 	cursor: pointer;
 }
