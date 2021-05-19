@@ -6,9 +6,11 @@ import * as compare from './modules/compare.js';
 const require = createRequire(import.meta.url);
 const express = require('express');
 const multer = require('multer');
+const fs = require('fs');
 
 const app = express();
 const port = 8080;
+const path = './files';
 
 // Console log for server start
 app.listen(port, (e) => {
@@ -20,23 +22,27 @@ app.use(express.json());
 app.use('/', express.static('web_pages', { extensions: ['html'] }));
 app.set('view engine');
 
+// ----------- \\
 // File Upload \\
+// ----------- \\
 
-// File storage
+!fs.existsSync(path) && fs.mkdirSync(path); // Checks if path exists, if not creates
+
 const fileStorage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, './files');
+    cb(null, path);
   },
   filename: (req, file, cb) => {
     cb(null, file.originalname);
   },
 });
 
-// Upload using multer
+// Upload using multer \\
+
 const upload = multer({ storage: fileStorage });
 
-// Set max # files to upload as 50 currently
-app.post('/upload-files', upload.array('multiFiles', 50),
+// Post function from HTML
+app.post('/upload-files', upload.array('multiFiles', 50), // Set max # files to upload as 50 currently
   function (req, res, err) {
     if (err) {
       console.log('error');
@@ -46,7 +52,10 @@ app.post('/upload-files', upload.array('multiFiles', 50),
     res.redirect('/');
   });
 
-// Database queries
+// ---------------- \\
+// Database queries \\
+// ---------------- \\
+
 async function getFileNames(req, res) {
   let result = [];
   result = await db.getNames();
