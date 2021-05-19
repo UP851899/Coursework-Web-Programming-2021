@@ -21,7 +21,7 @@ Here is my drag and drop and file upload zone. Files can be dropped here for upl
 
 ![textChange](images/files_uploaded.png)
 
-Unfortunately, dropping a group of files followed by a second group of files will not work - the way my program is designed means that it takes the most recent files to be dropped into the zone
+Unfortunately, dropping a group of files followed by a second group of files will not work - the way my program is designed means that it takes the most recent files to be dropped into the zone. This is also the same for selecting the files in the file browser, selecting one group of work and then going back to select another set before pressing the "upload" button will mean that the most recent set of work will be the ones ready to upload
 
 #### 2
 
@@ -50,3 +50,17 @@ Here we have the same navigation as the home page for website continuity, button
 #### 2
 
 Here is the results table for the file comparison. The table is sorted high-to-low to show the user which files have a considerable amount of plagiarism
+
+## File structure
+
+<image align="left" src="images/structure.png">
+
+Here is the file structure for my project.
+
+the "files" directory, as well as the "fileDB.sqlite" file will be automatically created when the program starts. The "files" folder will only be created if it does not exist, it wont replace the folder. The "fileDB.sqlite" is created and configured by the fileStorage.js script which will initialize the database using the "migrations/001-inital.sql" file, where my database config is held (creation of tables). SQLite was the best option for this season, be easy to integrate into my program and being able to run easily locally (unlike PSQL which I found to be a pain with my Software Engineering CW).
+
+Everything the user sees is within the "web_pages" folder. This contains the two HTML pages and the styling for my web app. Styling is kept to a single stylesheet for easy management and control over all HTML files (for example, if a user wants, it would need one edit to change the global font to comic sans)
+
+The "modules" folder contains the js script "compare.js", this is responsible for the comparison of files using string-comparison.
+
+To reset the program, the "files" folder and "fileDB.sqlite" can simply be deleted

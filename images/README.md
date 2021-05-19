@@ -1,5 +1,5 @@
 # Images
 
-Folder has nothing to do with the program, simply used for README project file
+![curious](hmm.jpg)
 
-=)
+Folder has nothing to do with the program, simply used to hold images for the README project file
