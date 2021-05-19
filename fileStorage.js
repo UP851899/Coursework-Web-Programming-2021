@@ -20,11 +20,11 @@ const dbConnect = init();
 // Takes req.files, inserts file details into DB for reference
 export async function uploadToDB(files) {
   for (const file of files) {
-    console.log(file.originalname);
+    // console.log(file.originalname); // Testing file name read
     let fileName = file.originalname;
     let path = file.path;
     let id = shortID.generate();
-    console.log(id);
+    // console.log(id); // Testing generated ID value
 
     const db = await dbConnect;
     db.run('INSERT INTO Files VALUES (?, ?, ?)', [id, fileName, path]);
