@@ -20,7 +20,6 @@ app.listen(port, (e) => {
 // Get webpages
 app.use(express.json());
 app.use('/', express.static('web_pages', { extensions: ['html'] }));
-app.set('view engine');
 
 // ----------- \\
 // File Upload \\
