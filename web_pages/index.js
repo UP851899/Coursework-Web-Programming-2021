@@ -1,5 +1,8 @@
 /* eslint-disable prefer-const */
+// eslint wants everything to be const, even when variable is changing
+// inside a for-loop, for that reason I disabled.
 'use strict';
+
 // EventListener for entire webpage - if dropped on wrong location
 window.addEventListener('load', () => {
   if (window.location.href.indexOf('compare.html') > -1) {
@@ -15,6 +18,7 @@ window.addEventListener('load', () => {
 // const fileSelector = document.getElementById('input');
 const dropZone = document.getElementById('upload');
 const fileInput = document.getElementById('input');
+const dropInfo = document.getElementById('dropInfo');
 
 dropZone.addEventListener('click', () => {
   fileInput.click();
@@ -29,6 +33,9 @@ dropZone.addEventListener('dragover', (event) => {
 dropZone.addEventListener('drop', (event) => {
   event.stopPropagation();
   event.preventDefault();
+
+  let numFilesDropped = event.dataTransfer.files.length; // Total files dropped
+  dropInfo.innerHTML = numFilesDropped + ' file(s) have been selected for upload';
   fileInput.files = event.dataTransfer.files; // Adds uploaded files to standard HTML input
 });
 
