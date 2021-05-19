@@ -12,16 +12,17 @@ window.addEventListener('load', () => {
   }
 });
 
-// -------------------- \\
-// Drag-n-drop & upload \\
-// -------------------- \\
+// ------------------------- \\
+// Drag-n-drop & File upload \\
+// ------------------------- \\
+
 // const fileSelector = document.getElementById('input');
 const dropZone = document.getElementById('upload');
 const fileInput = document.getElementById('input');
 const dropInfo = document.getElementById('dropInfo');
 
 fileInput.addEventListener('change', () => {
-  let numFilesSelected = fileInput.files.length;
+  let numFilesSelected = fileInput.files.length; // Gets value from HTML input of how many selected
   dropInfo.innerHTML = numFilesSelected + ' file(s) have been selected for upload';
 });
 
@@ -39,7 +40,7 @@ dropZone.addEventListener('drop', (event) => {
   event.stopPropagation();
   event.preventDefault();
 
-  let numFilesDropped = event.dataTransfer.files.length; // Total files dropped
+  let numFilesDropped = event.dataTransfer.files.length; // Total files dropped into zone
   dropInfo.innerHTML = numFilesDropped + ' file(s) have been selected for upload';
   fileInput.files = event.dataTransfer.files; // Adds uploaded files to standard HTML input
 });
