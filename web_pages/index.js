@@ -20,6 +20,11 @@ const dropZone = document.getElementById('upload');
 const fileInput = document.getElementById('input');
 const dropInfo = document.getElementById('dropInfo');
 
+fileInput.addEventListener('change', () => {
+  let numFilesSelected = fileInput.files.length;
+  dropInfo.innerHTML = numFilesSelected + ' file(s) have been selected for upload';
+});
+
 dropZone.addEventListener('click', () => {
   fileInput.click();
 });
