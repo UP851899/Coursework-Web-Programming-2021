@@ -1,206 +1,218 @@
 /* ------------ */
+
 /* Global style */
+
 /* ------------ */
 
 * {
-	font-family: Arial;
+  font-family: Arial;
 }
 
-
 /* -------------- */
+
 /* Navigation CSS */
+
 /* -------------- */
 
 .navigation .header {
-	padding-top: .5em;
-	padding-bottom: .5em;
-	background-color: #696969;
-	border-radius: 5px;
-    margin-bottom: 10px;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  background-color: #696969;
+  border-radius: 5px;
+  margin-bottom: 10px;
 }
 
 .navigation ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .navigation ul li {
-    margin-left: 20px;
-	margin-right: 20px;
-	font-size: larger;
+  margin-left: 20px;
+  margin-right: 20px;
+  font-size: larger;
 }
 
 .navigation .Title {
-    color: white;
-	margin: 0;
-	font-size: 1.45em;
+  color: white;
+  margin: 0;
+  font-size: 1.45em;
 }
 
-.navigation .Title, .nav {
-
-    padding: 10px 15px;
-	text-align: center;
-	display: block;
+.navigation .Title,
+.nav {
+  padding: 10px 15px;
+  text-align: center;
+  display: block;
 }
 
 .navigation .nav {
-    margin-top: 5px;
+  margin-top: 5px;
 }
 
 .navigation .nav a {
-    color: #e4e4e4;
-	font-size: 1em;
+  color: #e4e4e4;
+  font-size: 1em;
 }
 
 .navigation .nav a:hover {
-	color: #c7c7c7;
+  color: #c7c7c7;
 }
 
 .navigation {
-	padding-bottom: 20px;
+  padding-bottom: 20px;
 }
 
 /* -------------------------------------------------- */
+
 /* Media tests for screen width - adaptive navigation */
+
 /* -------------------------------------------------- */
 
 @media (min-width: 720px) {
-	.navigation .header, .nav {
-		display: flex;
-	}
-	.navigation .header {
-		flex-direction: column;
-		align-items: center;
-		width: 80%;
-		margin: 0 auto;
-		max-width: 1150px;
-	}
+  .navigation .header,
+  .nav {
+    display: flex;
+  }
+
+  .navigation .header {
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+    max-width: 1150px;
+  }
 }
 
 @media (min-width: 1024px) {
-	.navigation .header {
-		flex-direction: row;
-		justify-content: space-between;
-	}
-
+  .navigation .header {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }
 
 /* ------------------ */
+
 /* Index.html styling */
+
 /* ------------------ */
 
 .upload-form {
-	display: block;
-	text-align: center;
+  display: block;
+  text-align: center;
 }
 
 .upload-form form {
-	display: inline-block;
-	justify-content: center;
+  display: inline-block;
+  justify-content: center;
 }
 
 .fileList {
-	display: flex;
-	flex-direction: column;
-	text-align: center;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
 
 .fileList ul {
-	list-style: none;
-	padding: 0%;
+  list-style: none;
+  padding: 0%;
 }
 
 .fileList ul li {
-	margin-bottom: 7px;
+  margin-bottom: 7px;
 }
 
 .compareButton {
-	display: flex;
-	justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .compareButton .button {
-	background-color: #696969;
-	text-align: center;
-	color: white;
-	font-size: 20px;
-	justify-content: center;
-	padding: 15px 32px;
-	border-radius: 10px;
-	text-decoration: none;
-	transition: all .2s ease;
+  background-color: #696969;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  justify-content: center;
+  padding: 15px 32px;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: all 0.2s ease;
 }
 
 .compareButton .button:hover {
-	background-color: #4b4b4b;
+  background-color: #4b4b4b;
 }
 
 /* ----------------- */
+
 /* Drop zone styling */
+
 /* ----------------- */
 
 .drop-zone {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	text-align: center;
-	margin-bottom: 2em;
-	cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 2em;
+  cursor: pointer;
 }
 
 .drop-zone form {
-	position: relative; 
-	width: 500px;
-	height: 200px;
-	border: 4px dashed grey;
-	background-color: #c7c7c7;
-	box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 10px 20px 0 rgba(0, 0, 0, 0.19);
+  position: relative;
+  width: 500px;
+  height: 200px;
+  border: 4px dashed grey;
+  background-color: #c7c7c7;
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 10px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .drop-zone form p {
-	line-height: 120px;
+  line-height: 120px;
 }
 
 .drop-zone form input {
-	opacity: 0;
+  opacity: 0;
 }
 
 .drop-zone button {
-	background: #696969;
-	color: white;
-	width: 500px;
-	height: 30px;
-	margin-top: 2em;
-	border-radius: 6px;
-	transition: all .2s ease;
+  background: #696969;
+  color: white;
+  width: 500px;
+  height: 30px;
+  margin-top: 2em;
+  border-radius: 6px;
+  transition: all 0.2s ease;
 }
 
 .drop-zone button:hover {
-	background: #4b4b4b;
-	cursor: pointer;
+  background: #4b4b4b;
+  cursor: pointer;
 }
 
-
 /* -------------------- */
+
 /* Compare.html styling */
+
 /* -------------------- */
 
 .comparison {
-	display: block;
-	margin-left: auto;
-    margin-right: auto;
-	text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 .comparison table {
-	display: flex;
-	justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
-.comparison table td, th {
-	border: 1px solid #dddddd;
-	text-align: center;
-	padding: 8px;
+.comparison table td,
+th {
+  border: 1px solid #ddd;
+  text-align: center;
+  padding: 8px;
 }
